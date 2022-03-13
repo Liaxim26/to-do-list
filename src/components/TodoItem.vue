@@ -12,10 +12,8 @@
 export default {
   name: 'TodoItem',
   props: {
-    todo: {
-      type: Object,
-      required: true
-    }
+    todo: []
+    
   },
   components: {
    
@@ -51,7 +49,7 @@ li .delete:after {
     height: 16px;
     top: 50%;
     left: 50%;
-    background-image: url(https://cdn-icons.flaticon.com/png/512/5028/premium/5028066.png?token=exp=1647171718~hmac=652e0f213e8e114cda26ff0ba020f3ce);
+    background-image: url(https://psv4.userapi.com/c240331/u137781259/docs/d17/665dd9ece954/5028066.png?extra=TOmqX89AWxhEMQi1zX4Jmxt2fd5lgzQYkw3DpdYB62tzoAS_GsoykEL_90IEbg0dKY8tX2bAXFS_32qXfFRCvWn_i6EFCQ-rXNHVlf-3GO8MfrCoDP4dw4ulbmSkb0px-2bWT-Tq2MsMUsj7BNbP9nG3);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -83,5 +81,12 @@ li{
   padding-right: 49px;
   overflow: hidden;
   color: black;
+}
+
+@media (max-width: 768px){
+.delete {
+    opacity: 1;
+    width: 60px;
+}
 }
 </style>

@@ -24,8 +24,10 @@ export default {
           title: this.title,
           done: false
         }
-        localStorage.setItem('todos', JSON.stringify(newTodo));
-        //localStorage.setItem('todos',(localStorage.getItem('todos') || '') + JSON.stringify(newTodo))
+        var existingTask = JSON.parse(localStorage.getItem('todos')) ?? []
+        console.log(existingTask)
+        existingTask.push(newTodo)
+        localStorage.setItem('todos', JSON.stringify(existingTask));
         this.title = ''
       }
     }
@@ -77,5 +79,13 @@ export default {
   button:active{
     border: 1px solid black;
     transition-duration: 0.1s;
+  }
+  @media (max-width: 768px){
+    form{
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding-bottom:20px;
+    }
   }
 </style>

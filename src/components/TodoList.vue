@@ -17,10 +17,7 @@ import TodoItem from './TodoItem.vue'
 export default {
   name: 'TodoList',
   props: {
-    todos: {
-      type: Object,
-      required: true
-    }
+    todos: []
   },
   methods: {
     removeTodo(id) {
@@ -39,5 +36,11 @@ ul{
   margin: 0 auto;
   list-style-type: none;
   padding-bottom: 50px;
+}
+
+@media (max-width: 768px){
+ul{
+  width: 80%;
+}
 }
 </style>

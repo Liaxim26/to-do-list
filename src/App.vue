@@ -1,7 +1,7 @@
 <template>
   <vHeader />
   <TodoList class="TodoList"
-    v-bind:todos="todos"
+    v-bind:todos="this.todos"
   />
   <vFooter />
 </template>
@@ -16,21 +16,19 @@ export default {
   name: 'App',
   data() {
     return {
-      todos: [
-        {"id":0,"title":"Go to codepen and get inspired","done":false},
-        {"id":1,"title":"Pick a project","done":false},
-        {"id":2,"title":"Go to codepen and get inspired","done":false},
-        {"id":3,"title":"Pick a project","done":false},
-        {"id":4,"title":"Go to codepen and get inspired","done":false},
-        {"id":5,"title":"Pick a project","done":false},
-        {"id":6,"title":"Create a new pen","done":true}
-      ]
+      todos: []
     }
-  },
+  }, 
   mounted() {
-    if (localStorage.todos) {
-      this.todos = localStorage.todos
-    }
+    this.getTodos();
+  },
+  methods: {
+    // get all todos when loading the page
+    getTodos() {
+      if (localStorage.getItem('todos')) {
+        this.todos = JSON.parse(localStorage.getItem('todos'));
+      }
+    },
   },
   components: {
     vHeader, vFooter, TodoList,
