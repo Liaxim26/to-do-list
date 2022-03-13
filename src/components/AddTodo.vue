@@ -22,7 +22,7 @@ export default {
         const newTodo = {
           id: Date.now(),
           title: this.title,
-          completed: false
+          done: false
         }
         localStorage.setItem('todos', JSON.stringify(newTodo));
         //localStorage.setItem('todos',(localStorage.getItem('todos') || '') + JSON.stringify(newTodo))
@@ -50,7 +50,7 @@ export default {
   }
   input{
     outline: none;
-    padding: 10px 26px;
+    padding: 10px 15px 10px 38px;
     font-size: 17px;
     transition-duration: 0.5s;
     border-radius: 3px;

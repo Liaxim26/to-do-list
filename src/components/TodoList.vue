@@ -5,6 +5,7 @@
       <TodoItem 
         v-for="(todo, id) in todos" :key="id"
         v-bind:todo = "todo"
+        v-on:remove-todo="removeTodo" 
       />
     </ul>
   </div>
@@ -19,6 +20,11 @@ export default {
     todos: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    removeTodo(id) {
+      console.log(id)
     }
   },
   components: {
