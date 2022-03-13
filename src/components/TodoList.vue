@@ -1,10 +1,12 @@
 <template>
   <div>
     <AddTodo />
-    <TodoItem 
-      v-for="(todo, id) in todos" :key="id"
-      v-bind:todo = "todo"
-    />
+    <ul>
+      <TodoItem 
+        v-for="(todo, id) in todos" :key="id"
+        v-bind:todo = "todo"
+      />
+    </ul>
   </div>
 </template>
 
@@ -26,5 +28,10 @@ export default {
 </script>
 
 <style scoped>
-
+ul{
+  width: 400px;
+  margin: 0 auto;
+  list-style-type: none;
+  padding-bottom: 50px;
+}
 </style>

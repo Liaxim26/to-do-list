@@ -1,7 +1,7 @@
 <template>
   <h2>Добавьте запись</h2>
   <form @submit.prevent = "onSubmit">
-    <input type="text" v-model = "title">
+    <input type="text" v-model = "title" placeholder="Введите что-нибудь!">
     <button type="submit">Добавить</button>
   </form>
 </template>
@@ -50,12 +50,12 @@ export default {
   }
   input{
     outline: none;
-    padding: 10px 20px;
+    padding: 10px 26px;
     font-size: 17px;
     transition-duration: 0.5s;
-    border-radius: 10px;
+    border-radius: 3px;
     border: 0;
-    background: #bfbfc1;
+    background: #e0e8f5;;
   }
   input:focus{
     box-shadow: 0px 0px 20px 10px rgb(29 27 38);
@@ -67,7 +67,7 @@ export default {
       color: white;
       padding: 10px 20px;
       font-size: 17px;
-      border-radius: 10px;
+      border-radius: 3px;
       font-weight: 200;
       transition-duration: 0.5s;
   }
