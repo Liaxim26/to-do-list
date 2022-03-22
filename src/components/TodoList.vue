@@ -1,7 +1,7 @@
 <template>
   <div>
     <AddTodo 
-      
+      @add-todo="addTodo"
     />
     <ul>
       <TodoItem 
@@ -24,6 +24,9 @@ export default {
   methods: {
     removeTodo(id) {
       this.$emit('remove-todo', id)
+    },
+    addTodo(todo) {
+      this.$emit('add-todo', todo)
     }
   },
   components: {
