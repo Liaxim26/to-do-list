@@ -2,6 +2,7 @@
   <vHeader />
   <TodoList class="TodoList"
     v-bind:todos="this.todos"
+    @remove-todo='removeTodo'
   />
   <vFooter />
 </template>
@@ -16,11 +17,16 @@ export default {
   name: 'App',
   data() {
     return {
-      todos: []
+      todos: [
+       {id: 1, title: 'my first todo1', done: false},
+       {id: 2, title: 'my first todo2', done: false},
+       {id: 3, title: 'my first todo3', done: false},
+       {id: 4, title: 'my first todo4', done: false}
+      ]
     }
   }, 
   mounted() {
-    this.getTodos();
+    //this.getTodos();
   },
   methods: {
     // get all todos when loading the page
@@ -28,6 +34,11 @@ export default {
       if (localStorage.getItem('todos')) {
         this.todos = JSON.parse(localStorage.getItem('todos'));
       }
+    },
+    removeTodo(id) {
+      console.log(id)
+      console.log(this.todo)
+         this.todos = this.todos.filter(t => t.id !== id)
     },
   },
   components: {

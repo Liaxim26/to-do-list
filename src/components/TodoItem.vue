@@ -1,8 +1,8 @@
 <template>
     <li v-bind:class='{done: todo.done}'>
-      <input type="checkbox">
+      <input type="checkbox" @change="todo.done = !todo.done">
       <span>{{todo.title}}</span>
-      <span class='delete' v-on:click="$emit('remove-todo', todo.id)"></span>
+      <span class='delete' @click="$emit('remove-todo', todo.id)"></span>
     </li>
 </template>
 
@@ -12,8 +12,12 @@
 export default {
   name: 'TodoItem',
   props: {
-    todo: []
-    
+    todo_prop: []
+  },
+  data() {
+    return {
+      todo: this.todo_prop
+    }
   },
   components: {
    
@@ -49,7 +53,7 @@ li .delete:after {
     height: 16px;
     top: 50%;
     left: 50%;
-    background-image: url(https://psv4.userapi.com/c240331/u137781259/docs/d17/665dd9ece954/5028066.png?extra=TOmqX89AWxhEMQi1zX4Jmxt2fd5lgzQYkw3DpdYB62tzoAS_GsoykEL_90IEbg0dKY8tX2bAXFS_32qXfFRCvWn_i6EFCQ-rXNHVlf-3GO8MfrCoDP4dw4ulbmSkb0px-2bWT-Tq2MsMUsj7BNbP9nG3);
+    background-image: url(/src/assets/del-btn.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

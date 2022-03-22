@@ -24,6 +24,7 @@ export default {
           title: this.title,
           done: false
         }
+        this.$emit('add-todo', newTodo)
         var existingTask = JSON.parse(localStorage.getItem('todos')) ?? []
         console.log(existingTask)
         existingTask.push(newTodo)
