@@ -5,9 +5,10 @@
     />
     <ul>
       <TodoItem 
-        v-for="(todo, id) in todos" :key="id"
+        v-for="todo in todos" :key="todo.id" todo_prop.sync="todo"
         v-bind:todo_prop = "todo"
         @remove-todo="removeTodo" 
+        @done-todo="doneTodo"
       />
     </ul>
   </div>
@@ -19,7 +20,10 @@ import TodoItem from './TodoItem.vue'
 export default {
   name: 'TodoList',
   props: {
-    todos: []
+    todos: {
+      type: [Object, Array],
+      required: true
+    }
   },
   methods: {
     removeTodo(id) {
@@ -27,7 +31,11 @@ export default {
     },
     addTodo(todo) {
       this.$emit('add-todo', todo)
+    },
+    doneTodo(id){
+      this.$emit('done-todo', id)
     }
+    
   },
   components: {
     AddTodo, TodoItem

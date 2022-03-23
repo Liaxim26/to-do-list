@@ -1,6 +1,7 @@
 <template>
     <li v-bind:class='{done: todo.done}'>
-      <input type="checkbox" @change="todo.done = !todo.done">
+      <!-- <input type="checkbox" @change="todo.done = !todo.done"> -->
+      <input type="checkbox" v-model='check' @change="$emit('done-todo', todo.id)">
       <span>{{todo.title}}</span>
       <span class='delete' @click="$emit('remove-todo', todo.id)"></span>
     </li>
@@ -12,11 +13,25 @@
 export default {
   name: 'TodoItem',
   props: {
-    todo_prop: []
+    todo_prop: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
-      todo: this.todo_prop
+      todo: this.todo_prop,
+      check: false
+    }
+  },
+  mounted() {
+    this.checked()
+  },
+  methods: {
+    checked() {
+      if(this.todo.done == 1){
+        this.check = true
+      }
     }
   },
   components: {

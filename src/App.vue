@@ -4,6 +4,7 @@
     v-bind:todos="this.todos"
     @remove-todo="removeTodo"
     @add-todo="addTodo"
+    @done-todo="doneTodo"
   />
   <vFooter />
 </template>
@@ -23,6 +24,7 @@ export default {
   }, 
   mounted() {
     this.getTodos();
+    console.log(this.todos)
   },
   methods: {
     // get all todos when loading the page
@@ -32,9 +34,13 @@ export default {
       }
     },
     removeTodo(id) {
-      console.log(id)
-      console.log(this.todo)
-         this.todos = this.todos.filter(t => t.id !== id)
+      this.todos = this.todos.filter(t => t.id !== id)
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    },
+    doneTodo(id) {
+      const todo = this.todos.find(i => i.id == id)
+      todo.done = !todo.done
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     addTodo(todo) {
       this.todos.push(todo)
