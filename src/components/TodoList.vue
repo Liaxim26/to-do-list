@@ -3,9 +3,14 @@
     <AddTodo 
       @add-todo="addTodo"
     />
+    <select v-model="filter">
+      <option value='all'>Все</option>
+      <option value='done'>Выполненные</option>
+      <option value='not-done'>Не выполненные</option>
+    </select>
     <ul>
       <TodoItem 
-        v-for="todo in todos" :key="todo.id" todo_prop.sync="todo"
+        v-for="todo in filteredTodods" :key="todo.id" todo_prop.sync="todo"
         v-bind:todo_prop = "todo"
         @remove-todo="removeTodo" 
         @done-todo="doneTodo"
@@ -23,6 +28,26 @@ export default {
     todos: {
       type: [Object, Array],
       required: true
+    }
+  },
+  data(){
+    return{
+      filter: 'all',
+    }
+  },
+  computed: {
+    filteredTodods() {
+      var filter 
+      if(this.filter === 'all') {
+        return this.todos
+      }
+      if (this.filter === 'done') {
+        return this.todos.filter(t => t.done)
+      }
+      if (this.filter === 'not-done'){
+        return this.todos.filter(t => !t.done)
+      }
+      return filter
     }
   },
   methods: {
@@ -44,6 +69,14 @@ export default {
 </script>
 
 <style scoped>
+select{
+    margin-top: 15px;
+    padding: 6px 15px;
+    border-radius: 5px;
+    background: #e0e8f5;
+    font-size: 17px;
+    outline: none;
+}
 ul{
   width: 400px;
   margin: 0 auto;

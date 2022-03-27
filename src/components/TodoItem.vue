@@ -7,9 +7,8 @@
     </li>
 </template>
 
+
 <script>
-
-
 export default {
   name: 'TodoItem',
   props: {
@@ -29,7 +28,7 @@ export default {
   },
   methods: {
     checked() {
-      if(this.todo.done == 1){
+      if(this.todo.done === true){
         this.check = true
       }
     }
