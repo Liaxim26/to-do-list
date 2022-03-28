@@ -38,7 +38,7 @@ export default {
       localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     doneTodo(id) {
-      const todo = this.todos.find(i => i.id == id)
+      const todo = this.todos.find(t => t.id == id)
       todo.done = !todo.done
       localStorage.setItem('todos', JSON.stringify(this.todos));
     },
