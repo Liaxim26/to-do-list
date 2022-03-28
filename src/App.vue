@@ -80,6 +80,9 @@ body {
 .TodoList {
   flex: 1 0 auto;
   background: #333336;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 footer {
   flex: 0 0 auto;
